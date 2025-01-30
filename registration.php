@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('config.php');
 
 if (isset($_POST['register_form'])) {
@@ -45,6 +46,14 @@ if (isset($_POST['register_form'])) {
 
         if ($users_data === true) {
             $success = "Registration Successful!";
+
+            // Send Email
+            // $message = "Your verification code is:" . $email_code;
+            // mail($email, "Verification Code", $message);
+
+            $_SESSION['user_email'] = $email;
+            $_SESSION['user_mobile'] = $mobile;
+            header('location:verification.php');
         } else {
             $error = "Registration Failed!";
         }

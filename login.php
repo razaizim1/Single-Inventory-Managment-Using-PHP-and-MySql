@@ -24,6 +24,10 @@ if (isset($_POST['login_form'])) {
                 $_SESSION['user'] = $user_data;
                 header('location:index.php');
             } else {
+                $_SESSION['user_id'] = $user_data['id'];
+                $_SESSION['user_email'] = $user_data['email'];
+                $_SESSION['user_mobile'] = $user_data['mobile'];
+                
                 header('location:verification.php');
             }
         } else {
